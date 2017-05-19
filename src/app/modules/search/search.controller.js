@@ -1,11 +1,11 @@
-app.controller("userController", userController);
+app.controller("searchController", userController);
 
 function userController($scope, $http){   
-    
+    $scope.user={}
     $scope.searchUser = function() {
         $http({
             method: 'GET',
-            url: 'https://api.github.com/users/'+$scope.user
+            url: 'https://api.github.com/search/users?q='+$scope.user+'repos:%3E4+location:'+$scope.location
         }).then( 
             function success(response){
                 console.log(response.data);

@@ -1,0 +1,23 @@
+<div class="panel" ng-controller="searchController">
+  <div class="panel-title">
+    <form class="form-inline">
+      <h5>Search for users!</h5>
+      <input class="form-control input-sm"type="text" name="user" data-ng-model="user" required placeholder="Name">
+      <input class="form-control input-sm"type="text" name="user" data-ng-model="location" placeholder="Location">
+      <button class="btn btn-default" data-ng-click="searchUser()">Search</button>
+     </form>
+  </div>
+  <div class="panel-block">
+    <div class="panel panel-users_found" ng-repeat="found in userFound.items">
+      <h3 class="panel-title panel-darker"> {{found.login}}</h3>
+      <div class="panel-block panel-flex">
+        <img src="{{found.avatar_url}}" alt="profile_avatar" class="git-profile-avatar">
+				<div class="panel-block">
+          <p>Bio: {{found.bio}}</p>
+          <p><a href="{{found.html_url}}">{{found.html_url}}</a></p>
+          <p><a ui-sref="user({ userID: found.id})">See more >></a></p>
+        </div>
+       </div>
+      </div>
+	</div>
+</div>

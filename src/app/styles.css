@@ -1,3 +1,72 @@
-.ng-dirty .invalidcpf{
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800,900');
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+.ng-dirty .invalidcpf {
   border-color:red;
+}
+
+.wrapper {
+  display: block;
+  width: 90%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.page-title {
+  text-align: center;
+  margin: 20px;
+  font-weight: 300;
+}
+
+.panel-flex{
+  display: flex;
+}
+
+.input-sm {
+      height: 36px;
+    padding: 8px 12px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 0;
+    margin: 7px;
+}
+
+.git-profile-avatar {
+  width: 150px;
+  height: 150px;
+}
+
+.panel {
+  margin-bottom: 21px;
+  background-color: #ffffff;
+  border: 1px solid #d2d2d2;
+  border-radius: 0;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.panel-title {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  color: #fff;
+  background-color: #b52e31;
+  border-color: #dddddd;
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+}
+
+.panel-darker {
+  background-color:#394048;
+}
+
+.panel-block {
+  padding: 15px;
+}
+
+.panel-users_found {
+  margin: 10px 10px;
 }
