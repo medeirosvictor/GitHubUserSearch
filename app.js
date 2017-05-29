@@ -1,10 +1,10 @@
 var app = angular.module('app', ['ui.router']);
 
-app.config(function ($stateProvider){
+app.config(function ($stateProvider, $urlRouterProvider){
 
   var searchState = {
     name:'search',
-    url:'/search',
+    url:'',
     templateUrl:'modules/search/index.html'
   };
 
@@ -14,6 +14,8 @@ app.config(function ($stateProvider){
     controller: 'userController',
     templateUrl:'modules/user/index.html'
   };
-  $stateProvider.state(searchState);
   
+  $stateProvider.state(searchState);  
+  $stateProvider.state(userState);
+   
 });
