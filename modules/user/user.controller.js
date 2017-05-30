@@ -1,5 +1,9 @@
-app.controller('userController', userController);
+angular.module("app").controller("userController", userController);
 
-function userController(){
-    
+function userController($scope, userFactory){
+    init()
+
+    function init(){
+        $scope.found = userFactory.getCurrentUser();
+    }
 }

@@ -1,13 +1,12 @@
 <div class="panel" ng-controller="searchController">
   <div class="panel-block">
     <div class="panel panel-users_found">
-      <h3 class="panel-title panel-darker"> {{user.login}}</h3>
+      <h3 class="panel-title panel-darker"> {{found.login}}</h3>
       <div class="panel-block panel-flex">
-        <img src="{{user.avatar_url}}" alt="profile_avatar" class="git-profile-avatar">
+        <img src="{{found.avatar_url}}" alt="profile_avatar" class="git-profile-avatar">
 				<div class="panel-block">
-          <p>Bio: {{user.bio}}</p>
-          <p><a href="{{user.html_url}}">{{user.html_url}}</a></p>
-          <p><a ui-sref="user({ userID: user.id})">See more >></a></p>
+          <p>Bio: {{found.bio}}</p>
+          <p><a href="{{found.html_url}}">{{found.html_url}}</a></p>
         </div>
        </div>
       </div>

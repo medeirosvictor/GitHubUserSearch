@@ -1,23 +1,45 @@
 <div class="panel" ng-controller="searchController">
   <div class="panel-title">
-    <form class="form-inline" name="searchForm">
-      <h5>Search for users!</h5>
-      <input class="form-control input-sm" type="text" data-ng-model="username" placeholder="Name">
-      <input class="form-control input-sm" type="text" data-ng-model="location" placeholder="Location">
-      <button class="btn btn-default" data-ng-click="searchUser()">Search</button>
+    <h5>Search for users!</h5>
+    
+    <form name="searchForm">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" data-ng-model="username" id="username">
+        <label class="mdl-textfield__label" for="username">Name</label>
+      </div>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" data-ng-model="location" id="location">
+        <label class="mdl-textfield__label" for="location">Location</label>
+      </div>
+
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-ng-click="searchUser()">Search</button>
      </form>
   </div>
-  <div class="panel-block">
-    <div class="panel panel-users_found" ng-repeat="found in userFound.items">
-      <h3 class="panel-title panel-darker"> {{found.login}}</h3>
-      <div class="panel-block panel-flex">
-        <img src="{{found.avatar_url}}" alt="profile_avatar" class="git-profile-avatar">
-				<div class="panel-block">
-          <p>Bio: {{found.bio}}</p>
-          <p><a ui-sref="{{found.html_url}}">{{found.html_url}}</a></p>
-          <p><a ui-sref="user({ userID: found.id})">See more >></a></p>
-        </div>
-       </div>
+  
+  <div class="mdl-card mdl-shadow--2dp" ng-repeat="found in userFound.items">  
+      <div class="mdl-card__title mdl-card--expand">
+        <h3 class="mdl-card__title-text">{{found.login}} {{found.bio}}</h3>
       </div>
+      <img src="{{found.avatar_url}}" alt="profile_avatar" class="git-profile-avatar">
+			<div class="mdl-card__supporting-text">
+        {{found.bio}}
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+           ui-sref="{{found.html_url}}">
+          {{found.html_url}}
+        </a>
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+           ui-sref="user({ userID: found.id})" ng-click="setData(found)">
+          See more >>
+        </a>
+       </div>
 	</div>
 </div>
+<style>
+ .mdl-card{
+   margin: 15px 0px;
+ }
+
+</style>
