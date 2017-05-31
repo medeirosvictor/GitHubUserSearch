@@ -31,7 +31,11 @@ function userController($scope, $http, userFactory) {
                     if($scope.userFound.items.length == 0) {
                         $scope.status = "No users were found!";
                         console.log($scope.status);
+                    }else {
+                        $scope.status = $scope.userFound.total_count+" users found / " +
+                        +$scope.userFound.items.length+ " users displayed";
                     }
+                
             },
                 function error(){
                     console.log('error on the user request!');
