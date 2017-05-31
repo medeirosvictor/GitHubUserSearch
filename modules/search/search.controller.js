@@ -8,11 +8,14 @@ function userController($scope, $http, userFactory) {
     }
     
     $scope.searchUser = function() {
-
-        $scope.user = $scope.username;
+        $scope.status = '';
+        
         var urlMain = 'https://api.github.com/search/users?q=';
         var urlPartialLocation = '+in:fullname+repos:%3E4+location:';
-        
+        if(!!$scope.username == false){
+            $scope.status = "Please enter a valid name!";
+            return false;
+        }
         if (!!$scope.location == false){
             var url = urlMain + $scope.username;
         }else {

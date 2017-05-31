@@ -14,9 +14,11 @@
       </div>
         <button class="mdl-button mdl-button--colored mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-ng-click="searchUser()">Search</button>
      </form>
+     
+     <span class="notification" ng-if="!!status">{{status}}</span>
   </div>
+
   
-  <span ng-if="status != undefined">{{status}}</span>
 
   <div class="mdl-grid"> 
     <div class="mdl-cell mdl-cell--4-col"  ng-repeat="found in userFound.items">
@@ -24,17 +26,17 @@
         <div class="mdl-card__title mdl-card--expand">
           <h3 class="mdl-card__title-text">{{found.login}}</h3>
         </div>
-        <img src="{{found.avatar_url}}" alt="profile_avatar" class="git-profile-avatar">
+        <img ng-src="{{found.avatar_url}}" alt="profile_avatar" class="git-profile-avatar">
         <div class="mdl-card__supporting-text">
           {{found.bio}}
         </div>
         <div class="mdl-card__actions mdl-card--border">
           <a class="mdl-button mdl-js-button mdl-js-ripple-effect"
-            ui-sref="{{found.html_url}}">
+            href="{{found.html_url}}">
             GitHub Profile
           </a>
           <a class="mdl-button mdl-js-button mdl-js-ripple-effect"
-            ui-sref="user({ userID: found.id})" ng-click="setData(found)">
+            href="user({ userID: found.id})" ng-click="setData(found)">
             See more >>
           </a>
        </div>
@@ -50,6 +52,19 @@
   margin-right: auto;
   width: 300px;
  }
+ 
+ .notification{
+  padding: 10px;
+  margin-left: auto;
+  background-color: rgb(255,82,82);
+  margin-right: auto;
+  max-width: 200px;
+  text-align: center;
+  margin-top: 10px;
+  display: block;
+  margin-bottom: 10px;
+ }
+ 
  .mdl-card {
   margin: 15px 0px;
   width: initial;
