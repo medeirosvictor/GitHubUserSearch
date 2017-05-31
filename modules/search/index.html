@@ -12,26 +12,28 @@
         <input class="mdl-textfield__input" type="text" data-ng-model="location" id="location">
         <label class="mdl-textfield__label" for="location">Location</label>
       </div>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-ng-click="searchUser()">Search</button>
+        <button class="mdl-button mdl-button--colored mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-ng-click="searchUser()">Search</button>
      </form>
   </div>
+  
+  <span ng-if="status != undefined">{{status}}</span>
 
   <div class="mdl-grid"> 
     <div class="mdl-cell mdl-cell--4-col"  ng-repeat="found in userFound.items">
       <div class="mdl-card mdl-shadow--2dp">  
         <div class="mdl-card__title mdl-card--expand">
-          <h3 class="mdl-card__title-text">{{found.login}} {{found.bio}}</h3>
+          <h3 class="mdl-card__title-text">{{found.login}}</h3>
         </div>
         <img src="{{found.avatar_url}}" alt="profile_avatar" class="git-profile-avatar">
         <div class="mdl-card__supporting-text">
           {{found.bio}}
         </div>
         <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+          <a class="mdl-button mdl-js-button mdl-js-ripple-effect"
             ui-sref="{{found.html_url}}">
-            {{found.html_url}}
+            GitHub Profile
           </a>
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+          <a class="mdl-button mdl-js-button mdl-js-ripple-effect"
             ui-sref="user({ userID: found.id})" ng-click="setData(found)">
             See more >>
           </a>
@@ -59,8 +61,9 @@
   margin-left: auto;
   margin-right: auto;
   width: 150px;
+  border-radius: 50%;
  }
- .mdl-button__ripple-container{
+ .mdl-button{
   width: 100%;
  }
  h5 {

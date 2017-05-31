@@ -25,6 +25,10 @@ function userController($scope, $http, userFactory) {
                 function success(response){
                     console.log(response.data);
                     $scope.userFound = response.data;
+                    if($scope.userFound.items.length == 0) {
+                        $scope.status = "No users were found!";
+                        console.log($scope.status);
+                    }
             },
                 function error(){
                     console.log('error on the user request!');
