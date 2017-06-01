@@ -2,12 +2,13 @@ angular.module('app').controller("searchController", userController);
 
 function userController($scope, $http, userFactory) {
     $scope.user={};
-    
+    $scope.user = $scope.username;
     $scope.setData = function (user) {
         userFactory.setCurrentUser(user);
     }
     
     $scope.searchUser = function() {
+        $scope.user = $scope.username;
         $scope.status = '';
         
         var urlMain = 'https://api.github.com/search/users?q=';
@@ -18,7 +19,9 @@ function userController($scope, $http, userFactory) {
         }
         if (!!$scope.location == false){
             var url = urlMain + $scope.username;
-        }else {
+        }
+        
+        else {
             var url = urlMain + $scope.username + urlPartialLocation + $scope.location;
         }            
             $http({
