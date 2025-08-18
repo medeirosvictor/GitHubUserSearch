@@ -1,12 +1,7 @@
-# GitHub Users
+# GitHub User Search
 
-This is a implementation of the GitHub Api with AngularJS (1.x), for searching users.
+Simple implementation of the GitHub Api for searching users (I needed it lol)
 
 https://medeirosvictor.github.io/GitHubUserSearch/
 
-## TO DO
-
-Improve display of information.
-
-Improve search form/method (optional fields and such).
-
+latest update wip: Migrated from Angular 1 to ReactJS (2025) 
