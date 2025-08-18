@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+  --color-gray-20: #f6f8fb;
+  --color-gray-50: #eaedf2;
+  --color-gray-100: #c7d1e1;
+  --color-gray-500: #46556e;
+
+  --color-primary-100: #c4bbed;
+  --color-primary-300: #5f45d4;
+  --color-primary-500: #2500c3;
+
+  --color-secondary-400: #2a3891;
+  --color-secondary-500: #151c63;
+
+  --font-dmsans: 'DM Sans', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1060px;
+
+  --background-gradient-yellowred: linear-gradient(90deg, #ff616a 0%, #ffc837 100%);
+}
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  @apply text-gray-500;
+}
