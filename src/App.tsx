@@ -11,7 +11,7 @@ interface User {
 
 const App: FC = () => {
     const [users, setUsers] = useState<User []>([])
-    const [statusMessage, setStatusMessage] = useState<string>('')
+    const [statusMessage, setStatusMessage] = useState<string>('Search for someone!')
 
   return (
     <div className='app bg-gray-20 font-bold flex flex-col'>

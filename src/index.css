@@ -34,3 +34,8 @@ body,
   font-family: 'DM Sans', sans-serif;
   @apply text-gray-500;
 }
+
+.active-page {
+    background-color: var(--color-primary-500);
+    color: var(--color-gray-20);
+}

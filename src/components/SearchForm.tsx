@@ -16,7 +16,7 @@ const SearchForm: FC<SearchFormProps> = ({ setUsers, setStatusMessage }) => {
         formContainer: 'w-[300px] mx-auto',
         form: 'flex flex-col justify-center gap-1',
         input: 'border-2 p-3',
-        submit: 'border-1 p-5 bold uppercase cursor-pointer'
+        submit: 'text-white bg-primary-500 border-1 p-5 bold uppercase cursor-pointer hover:bg-primary-300'
     }
 
     const [name, setName] = useState<string>('')
@@ -43,7 +43,7 @@ const SearchForm: FC<SearchFormProps> = ({ setUsers, setStatusMessage }) => {
                 const usersFound: User[] = data.items
                 console.log(usersFound)
                 setUsers(usersFound)
-                setStatusMessage(`${data.total_count} total users found / ${usersFound.length} users displayed`)
+                setStatusMessage(`${data.total_count} users found - diplaying: `)
             } else {
                 setStatusMessage(`Error: ${data.message || 'Failed to fetch users.'}`)
             }
