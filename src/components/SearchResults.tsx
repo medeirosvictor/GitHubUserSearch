@@ -38,7 +38,7 @@ const SearchResults: FC<SearchResultProps> = ({ users, statusMessage, totalCount
                         className='text-primary-500 text-2xl font-montserrat'
                     />
                 )}
-                <p className='text-center text-white text-[19px]'>{statusMessage}</p>
+                <p className='text-center text-gray-500 text-[19px]'>{statusMessage}</p>
                 {
                     users.length ?
                     <select
