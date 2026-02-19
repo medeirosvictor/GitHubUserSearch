@@ -1,26 +1,27 @@
 import { type FC } from 'react'
-
-interface User {
-    login: string
-    avatar_url: string
-    url: string
-}
+import { Link } from 'react-router-dom'
+import type { User } from '@/types'
 
 interface UserCardProps {
     user: User
 }
 
 const UserCard: FC<UserCardProps> = ({ user }) => {
-  const userProfileURL = `https://github.com/${user.login}`
-
   return (
-    <div className='flex flex-col justify-center items-left w-[300px]'>
-        <img className='md:w-full md:h-full mx-auto h-[250px] w-[250px]' src={user.avatar_url} alt={`user profile pic + ${user.login}`}/>
-        <a className='underline flex justify-around text-primary-500 bg-primary-100 p-1 text-center hover:text-amber-600'
-        href={userProfileURL} target='_blank'>
-            {user.login}
-        </a>
-    </div>
+    <Link to={`/user/${user.login}`} className="block">
+        <div className='flex flex-col justify-center items-center'>
+            <img
+                className='w-full aspect-square object-cover rounded-t-xl'
+                src={user.avatar_url}
+                alt={`${user.login}'s avatar`}
+            />
+            <div className='w-full text-center py-2 px-3 bg-primary-100/40 rounded-b-xl'>
+                <span className='text-primary-500 font-semibold text-sm hover:text-primary-300 transition-colors'>
+                    {user.login}
+                </span>
+            </div>
+        </div>
+    </Link>
   )
 }
 

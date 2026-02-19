@@ -11,4 +11,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
+  build: {
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          three: ['three', 'postprocessing'],
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+        },
+      },
+    },
+  },
 })

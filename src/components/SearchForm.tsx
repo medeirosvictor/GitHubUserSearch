@@ -1,79 +1,49 @@
 import { useState, type FormEvent, type FC } from 'react'
 
-interface User {
-    login: string
-    avatar_url: string
-    url: string
-}
-
 interface SearchFormProps {
-    setUsers: React.Dispatch<React.SetStateAction<User[]>>;
-    setStatusMessage: React.Dispatch<React.SetStateAction<string>>;
+    initialName: string
+    initialLocation: string
+    onSearch: (name: string, location: string) => void
 }
 
-const SearchForm: FC<SearchFormProps> = ({ setUsers, setStatusMessage }) => {
-    const classes = {
-        formContainer: 'w-[300px] mx-auto',
-        form: 'flex flex-col justify-center gap-1',
-        input: 'border-2 p-3',
-        submit: 'text-white bg-primary-500 border-1 p-5 bold uppercase cursor-pointer hover:bg-primary-300'
-    }
+const SearchForm: FC<SearchFormProps> = ({ initialName, initialLocation, onSearch }) => {
+    const [name, setName] = useState<string>(initialName)
+    const [location, setLocation] = useState<string>(initialLocation)
 
-    const [name, setName] = useState<string>('')
-    const [location, setLocation] = useState<string>('')
-
-    const handleSearch = async (event: FormEvent) => {
+    const handleSubmit = (event: FormEvent) => {
         event.preventDefault()
-
         if (!name) return
-
-        setStatusMessage('Searching...');
-        setUsers([]);
-
-        const urlMain = 'https://api.github.com/search/users?q='
-        let url = `${urlMain}${name}`
-
-        if (location) url += `+in:fullname+repos:>4+location:${location}`
-
-        try {
-            const response = await fetch(url)
-            const data = await response.json()
-
-            if (response.ok) {
-                const usersFound: User[] = data.items
-                console.log(usersFound)
-                setUsers(usersFound)
-                setStatusMessage(`${data.total_count} users found - diplaying: `)
-            } else {
-                setStatusMessage(`Error: ${data.message || 'Failed to fetch users.'}`)
-            }
-        } catch(e) {
-            console.error('Error on the user request:', e)
-            setStatusMessage('Error on the user request')
-        }
+        onSearch(name, location)
     }
 
-  return (
-    <div className={classes.formContainer}>
-        <form className={classes.form} onSubmit={handleSearch}>
-            <input 
-                id='name'
-                onChange={(e) => setName(e.target.value)}
-                required
-                value={name} 
-                className='border-2 p-3' 
-                type="text" placeholder='Name' />
-            <input 
-                id='location'
-                onChange={(e) => setLocation(e.target.value)} 
-                value={location} 
-                className={classes.input} 
-                type="text" 
-                placeholder='Location' />
-            <button className={classes.submit} type="submit">search</button>
-        </form>
-    </div>
-  )
+    return (
+        <div className='w-[300px] mx-auto'>
+            <form className='flex flex-col justify-center gap-2' onSubmit={handleSubmit}>
+                <input
+                    id='name'
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    value={name}
+                    className='bg-white border border-gray-100 rounded-xl px-4 py-3 text-gray-500 placeholder:text-gray-100
+                               focus:outline-none focus:border-primary-300 focus:ring-1 focus:ring-primary-300 transition-colors'
+                    type="text" placeholder='Name' />
+                <input
+                    id='location'
+                    onChange={(e) => setLocation(e.target.value)}
+                    value={location}
+                    className='bg-white border border-gray-100 rounded-xl px-4 py-3 text-gray-500 placeholder:text-gray-100
+                               focus:outline-none focus:border-primary-300 focus:ring-1 focus:ring-primary-300 transition-colors'
+                    type="text"
+                    placeholder='Location' />
+                <button
+                    className='text-white bg-primary-500 rounded-xl px-4 py-3 font-bold uppercase cursor-pointer
+                               hover:bg-primary-300 transition-colors shadow-md hover:shadow-lg'
+                    type="submit">
+                    search
+                </button>
+            </form>
+        </div>
+    )
 }
 
 export default SearchForm

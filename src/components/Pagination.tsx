@@ -23,13 +23,15 @@ const Pagination: FC<PaginationProps> = ({ totalPosts, postPerPage, setCurrentPa
     )
 
   return (
-    <div className='flex justify-center gap-1 m-5'>
+    <div className='flex justify-center gap-2 flex-wrap'>
         {
             pages.map((page) => {
-                return <button 
-                    className={`py-1 px-2 border-cyan-500 border-2 cursor-pointer hover:bg-primary-100 hover:text-white
-                        ${activePage == page ? 'active-page':''}`}
-                    key={page} 
+                return <button
+                    className={`py-1.5 px-3 rounded-xl border border-gray-100 bg-white/80 backdrop-blur-sm
+                        cursor-pointer transition-all duration-200
+                        hover:bg-primary-100/40 hover:border-primary-300/40 hover:text-primary-500
+                        ${activePage == page ? 'active-page rounded-xl':''}`}
+                    key={page}
                     onClick={() => handlePageChange(page)}>{page}</button>
             })
         }
