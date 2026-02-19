@@ -2,8 +2,6 @@
 
 Search GitHub users by name and location, browse results in an interactive grid, and view detailed profile cards.
 
-🔗 **Live:** https://githubusersearch-vm.netlify.app/
-
 ## Tech Stack
 
 - **React 19** + **TypeScript** (strict mode)
@@ -31,6 +29,26 @@ pnpm run dev
 | `pnpm run preview` | Preview production build |
 | `pnpm run lint` | ESLint |
 
+## Deploy to GitHub Pages
+
+1. Push your code to GitHub
+
+2. Install the deploy dependency:
+   ```bash
+   pnpm add -D gh-pages
+   ```
+
+3. The `deploy` script is already configured. Run:
+   ```bash
+   pnpm run deploy
+   ```
+
+4. In your GitHub repo, go to **Settings → Pages** and set:
+   - **Source:** Deploy from a branch
+   - **Branch:** `gh-pages` / `/ (root)`
+
+5. Your site will be live at `https://<username>.github.io/GitHubUserSearch/`
+
 ## Features
 
 - Search GitHub users by name and optional location filter
@@ -38,7 +56,7 @@ pnpm run dev
 - Animated user count (CountUp)
 - Click a user card → profile page with avatar, bio, stats, links
 - Back navigation preserves search results (TanStack Query cache + URL params)
-- WebGL grid scan background with mouse-reactive parallax
+- WebGL grid scan background with mouse-reactive parallax toggle
 - Rate limit detection and warnings
 
 ## Project History
